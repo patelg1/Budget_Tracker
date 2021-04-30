@@ -4,6 +4,7 @@ const FILES_TO_CACHE = [
     '/styles.css',
     '/index.js',
     '/db.js',
+    '/manifest.webmanifest',
     'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',    
     'https://fonts.googleapis.com/css?family=Istok+Web|Montserrat:800&display=swap',
     'https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css',
@@ -69,18 +70,11 @@ const FILES_TO_CACHE = [
   
     // use cache first for all other requests for performance
     event.respondWith(
-      caches.match(event.request).then(cachedResponse => {
-        if (cachedResponse) {
-          return cachedResponse;
-        }
-  
-        // request is not in cache. make network request and cache the response
-        return caches.open(PRECACHE).then(cache => {
-          return fetch(event.request).then(response => {
-            return cache.put(event.request, response.clone()).then(() => {
-              return response;
-            });
-          });
+      caches
+      .open(PRECACHE)
+      .then(cache => {
+        return cache.match(event.request).then(response => {
+          return response || fetch(event.request);
         });
       })
     );

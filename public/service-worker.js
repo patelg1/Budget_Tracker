@@ -43,27 +43,7 @@ const FILES_TO_CACHE = [
     );
     self.clients.claim();
     
-  });
-  
-  // self.addEventListener('fetch', (event) => {
-  //   if (event.request.url.startsWith(self.location.origin)) {
-  //     event.respondWith(
-  //       caches.match(event.request).then((cachedResponse) => {
-  //         if (cachedResponse) {
-  //           return cachedResponse;
-  //         }
-  
-  //         return caches.open(RUNTIME).then((cache) => {
-  //           return fetch(event.request).then((response) => {
-  //             return cache.put(event.request, response.clone()).then(() => {
-  //               return response;
-  //             });
-  //           });
-  //         });
-  //       })
-  //     );
-  //   }
-  // });
+  });  
 
   self.addEventListener("fetch", event => {    
     // handle runtime GET requests for data from /api routes
@@ -104,21 +84,4 @@ const FILES_TO_CACHE = [
         });
       })
     );
-  });
-
-
-
-    // self.addEventListener('fetch', function (e) {
-    //     console.log('fetch request : ' + e.request.url)
-    //     e.respondWith(
-    //         caches.match(e.request).then(function (request) {
-    //             if (request) {
-    //                 console.log('responding with cache : ' + e.request.url)
-    //                 return request
-    //             }            else {
-    //                 console.log('file is not cached, fetching : ' + e.request.url)
-    //                 return fetch(e.request)
-    //             }
-    //         })
-    //     )
-    // });
+  }); 

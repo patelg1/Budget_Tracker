@@ -38,11 +38,11 @@ Run `npm install` to install all dependencies
 
 ## Usage
 
-Deployed Link: 
+Deployed Link: https://vast-everglades-69962.herokuapp.com/
 
 Demo:
 
-![Budget Tracker Demo]()
+![Budget Tracker Demo](/public/assets/Budget_Tracker.gif)
 
 ## Contributors
 See the [Contributor Covenant](https://www.contributor-covenant.org/version/2/0/code_of_conduct/)
